@@ -303,3 +303,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myY: 0
   velocity: 5
+  myLimit: 3.5

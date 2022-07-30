@@ -8,6 +8,7 @@ public class RaqueteController : MonoBehaviour
     private Vector3 myPosition;
     public float myY;
     public float velocity = 0.01f;
+    public float myLimit = 3.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,14 @@ public class RaqueteController : MonoBehaviour
         //modify the paddle position
         transform.position = myPosition;
 
-        //taking the Input
-        if (Input.GetKey(KeyCode.W))
+        //taking the Input AND increase the value of Y only if it less then myLimit
+        if (Input.GetKey(KeyCode.W) && myY < myLimit)
         {
-            myY += velocity * Time.deltaTime;
+            myY += velocity * Time.deltaTime;         
         }
-        if (Input.GetKey(KeyCode.S))
-        {
+        //taking Input AND decrease the value of the Y only if it greater then myLimit
+        if (Input.GetKey(KeyCode.S) && myY > -myLimit)
+        {                     
             myY += -velocity * Time.deltaTime;
         }
         
