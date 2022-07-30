@@ -183,6 +183,8 @@ MonoBehaviour:
   velocity: 5
   myLimit: 3.5
   player1: 0
+  automatic: 0
+  ballTransform: {fileID: 882410414}
 --- !u!212 &269394955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -459,7 +461,7 @@ GameObject:
   - component: {fileID: 882410416}
   - component: {fileID: 882410417}
   m_Layer: 0
-  m_Name: bola
+  m_Name: ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -794,6 +796,8 @@ MonoBehaviour:
   velocity: 5
   myLimit: 3.5
   player1: 1
+  automatic: 0
+  ballTransform: {fileID: 882410414}
 --- !u!61 &1875748139
 BoxCollider2D:
   m_ObjectHideFlags: 0

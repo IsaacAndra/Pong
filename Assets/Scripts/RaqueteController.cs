@@ -12,6 +12,13 @@ public class RaqueteController : MonoBehaviour
 
     public bool player1;
 
+    //variable to verify if it should be Controlled by IA
+    public bool automatic = false;
+
+    //taking ball position
+    public Transform ballTransform;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,30 +38,38 @@ public class RaqueteController : MonoBehaviour
         //velocity mutiple by deltatime
         float deltaVelocity = velocity * Time.deltaTime;
 
-        //verifing if is player 1
-        if (player1)
+        if (!automatic)
         {
-            //taking the Input
-            if (Input.GetKey(KeyCode.W))
+
+            //verifing if is player 1
+            if (player1)
             {
-                myY += deltaVelocity;
+                //taking the Input
+                if (Input.GetKey(KeyCode.W))
+                {
+                    myY += deltaVelocity;
+                }
+                //taking Input
+                if (Input.GetKey(KeyCode.S))
+                {
+                    myY += -deltaVelocity;
+                }
             }
-            //taking Input
-            if (Input.GetKey(KeyCode.S))
+            else
             {
-                myY += -deltaVelocity;
+                if (Input.GetKey(KeyCode.UpArrow))
+                {
+                    myY += deltaVelocity;
+                }
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    myY += -deltaVelocity;
+                }
             }
         }
         else
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                myY += deltaVelocity;
-            }
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                myY += -deltaVelocity;  
-            }
+            myY = Mathf.Lerp(myY, ballTransform.position.y, 0.08f);
         }
 
         //preventing the player from going over the limit
@@ -62,7 +77,7 @@ public class RaqueteController : MonoBehaviour
         {
             myY = -myLimit;
         }
-        if(myY > myLimit)
+        if (myY > myLimit)
         {
             myY = myLimit;
         }
