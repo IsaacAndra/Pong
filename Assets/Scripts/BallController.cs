@@ -13,7 +13,31 @@ public class BallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myVelocity.x = -velocity;
+        
+
+        int direcao = Random.Range(0, 4);
+
+        if (direcao == 0)
+        {
+            myVelocity.x = velocity;
+            myVelocity.y = velocity;
+        }
+        else if (direcao == 1)
+        {
+            myVelocity.x = -velocity;
+            myVelocity.y = velocity;
+        }
+        else if (direcao == 2)
+        {
+            myVelocity.x = -velocity;
+            myVelocity.y = -velocity;
+        }
+        else
+        {
+            myVelocity.x = velocity;
+            myVelocity.y = -velocity;
+        }
+
         //adding velocity to the left
         rb.velocity = myVelocity;
     }
