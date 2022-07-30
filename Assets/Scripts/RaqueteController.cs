@@ -65,10 +65,23 @@ public class RaqueteController : MonoBehaviour
                 {
                     myY += -deltaVelocity;
                 }
+
+                //Automatic alternated player
+                if(Input.GetKey(KeyCode.Return))
+                {
+                    automatic = true;
+                }
             }
         }
         else
         {
+            //Manual alternated player
+            if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow))
+            {
+                automatic = false;
+            }
+
+
             myY = Mathf.Lerp(myY, ballTransform.position.y, 0.08f);
         }
 

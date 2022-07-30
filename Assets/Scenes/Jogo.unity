@@ -183,7 +183,7 @@ MonoBehaviour:
   velocity: 5
   myLimit: 3.5
   player1: 0
-  automatic: 0
+  automatic: 1
   ballTransform: {fileID: 882410414}
 --- !u!212 &269394955
 SpriteRenderer:
