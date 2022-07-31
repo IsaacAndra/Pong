@@ -12,44 +12,52 @@ public class BallController : MonoBehaviour
     public Transform camTransform;
 
     public float velocity = 5f;
-
     public float horizontalLimit = 12f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-
-        int direcao = Random.Range(0, 4);
-
-        if (direcao == 0)
-        {
-            myVelocity.x = velocity;
-            myVelocity.y = velocity;
-        }
-        else if (direcao == 1)
-        {
-            myVelocity.x = -velocity;
-            myVelocity.y = velocity;
-        }
-        else if (direcao == 2)
-        {
-            myVelocity.x = -velocity;
-            myVelocity.y = -velocity;
-        }
-        else
-        {
-            myVelocity.x = velocity;
-            myVelocity.y = -velocity;
-        }
-
-        //adding velocity to the left
-        rb.velocity = myVelocity;
-    }
+    public float delay = 1f;
+    public bool gameStarted = false;
 
     // Update is called once per frame
     void Update()
     {
+        //Decreasing delay's value
+        delay -= Time.deltaTime;
+
+        //Verifing if delay is in 0
+        if(delay <= 0 && gameStarted == false)
+        {
+            Debug.Log("Cheguei no 0");
+
+            gameStarted = true;
+
+            //Game Inicialization
+            int direcao = Random.Range(0, 4);
+
+            if (direcao == 0)
+            {
+                myVelocity.x = velocity;
+                myVelocity.y = velocity;
+            }
+            else if (direcao == 1)
+            {
+                myVelocity.x = -velocity;
+                myVelocity.y = velocity;
+            }
+            else if (direcao == 2)
+            {
+                myVelocity.x = -velocity;
+                myVelocity.y = -velocity;
+            }
+            else
+            {
+                myVelocity.x = velocity;
+                myVelocity.y = -velocity;
+            }
+
+            //adding velocity to the left
+            rb.velocity = myVelocity;
+        }
+
         if(transform.position.x > horizontalLimit || transform.position.x < -horizontalLimit)
         {
             //Restarting my Scene
