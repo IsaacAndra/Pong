@@ -7,9 +7,9 @@ public class BallController : MonoBehaviour
 {
     //creating the varable to know who's my body.
     public Rigidbody2D rb;
-    private Vector2 myVelocity;
     public AudioClip boing;
     public Transform camTransform;
+    private Vector2 myVelocity;
 
     public float velocity = 5f;
     public float horizontalLimit = 12f;
@@ -20,17 +20,23 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DalayTime();
+        LimitPosition();
+    }
+
+    private void DalayTime()
+    {
         //Decreasing delay's value
         delay -= Time.deltaTime;
 
         //Verifing if delay is in 0
-        if(delay <= 0 && gameStarted == false)
+        if (delay <= 0 && gameStarted == false)
         {
             Debug.Log("Cheguei no 0");
 
             gameStarted = true;
 
-            //Game Inicialization
+            //Game Inicialization/Random Direction
             int direcao = Random.Range(0, 4);
 
             if (direcao == 0)
@@ -57,14 +63,16 @@ public class BallController : MonoBehaviour
             //adding velocity to the left
             rb.velocity = myVelocity;
         }
+    }
 
-        if(transform.position.x > horizontalLimit || transform.position.x < -horizontalLimit)
+    private void LimitPosition()
+    {
+        if (transform.position.x > horizontalLimit || transform.position.x < -horizontalLimit)
         {
             //Restarting my Scene
             SceneManager.LoadScene("Jogo");
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
