@@ -82,7 +82,7 @@ public class RaqueteController : MonoBehaviour
             }
 
 
-            myY = Mathf.Lerp(myY, ballTransform.position.y, 0.1f);
+            myY = Mathf.Lerp(myY, ballTransform.position.y, 0.02f);
         }
 
         //preventing the player from going over the limit
