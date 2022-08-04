@@ -24,6 +24,7 @@ public class BallController : MonoBehaviour
         LimitPosition();
     }
 
+    //Function responsible for delaying the startgame and the random direction of the ball.
     private void DalayTime()
     {
         //Decreasing delay's value
@@ -65,6 +66,7 @@ public class BallController : MonoBehaviour
         }
     }
 
+    //Function responsible for the horizontal limit of the ball
     private void LimitPosition()
     {
         if (transform.position.x > horizontalLimit || transform.position.x < -horizontalLimit)
